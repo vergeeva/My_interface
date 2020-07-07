@@ -8,24 +8,13 @@ public:
 	Word();
 
 protected:
-	String^ word;
-	String^ definition;
+	String^ word = gcnew String("");
+	String^ definition = gcnew String("");
 public:
-	Word^ from_file_in( String^ File_name)
+	Word^ operator =(Word^ other)
 	{
-		StreamReader^ My_SR = File::OpenText(File_name);
-		String^ My_Str = My_SR->ReadLine();
-		for (int i = 0; i < My_Str->Length; i++)
-		{
-			while (My_Str[i] != Convert::ToChar("-"))
-			{
-				this->word += My_Str[i];
-			}
-			if (My_Str[i] == Convert::ToChar("-"))
-			{
-				this->definition += My_Str[i];
-			}
-		}
+		this->Word_ = other->Word_;
+		this->Definition = other->Definition;
 		return this;
 	}
 	property String^ Word_
@@ -34,7 +23,7 @@ public:
 			return word;
 		}
 		void set(String^ Word_) {
-			word = Word_;
+			word = gcnew String(Word_);
 		}
 	}
 	property String^ Definition {
@@ -42,8 +31,53 @@ public:
 			return definition;
 		}
 		void set(String^ Definition) {
-			definition = Definition;
+			definition = gcnew String(Definition);
 		}
+	};
+};
+
+public ref class my_dict
+{
+	array <Word^>^ my_di = gcnew array <Word^>(100);
+	int len;
+	bool Check()
+	{
+		return len >= 0;
+	}
+public:
+	my_dict()
+	{
+		len = 0;
+		for (int i = 0; i < 100; i++)
+		{
+			this->my_di[i] = gcnew Word();
+		}
+	}
+	void View(System::Windows::Forms::ListBox^ LB);
+	bool empty();
+	bool full();
+	bool del(Word^);
+	bool add(Word^);
+	void loadDictionary(String^ fileName);
+	int find(String^ name);
+	property int Len {
+		int get() {
+			return len;
+		}
+		void set(int D) {
+			len = D;
+		}
+	};
+	String^ find_def(System::Windows::Forms::ListBox^ LB)
+	{
+		for (int i = 0; i < len; i++)
+		{
+			if (my_di[i]->Word_ == LB->SelectedItem)
+			{
+				return my_di[i]->Definition;
+			}
+		}
+		return "Нет определения";
 	}
 };
 

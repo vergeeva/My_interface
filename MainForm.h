@@ -526,7 +526,7 @@ namespace Myinterface {
 			this->äîáàâèòüÂÑëîâàðüToolStripMenuItem->Name = L"äîáàâèòüÂÑëîâàðüToolStripMenuItem";
 			this->äîáàâèòüÂÑëîâàðüToolStripMenuItem->Size = System::Drawing::Size(218, 24);
 			this->äîáàâèòüÂÑëîâàðüToolStripMenuItem->Text = L"Äîáàâèòü â ñëîâàðü";
-			this->äîáàâèòüÂÑëîâàðüToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainForm::äîáàâèòüÂÑëîâàðüToolStripMenuItem_Click);
+			//this->äîáàâèòüÂÑëîâàðüToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainForm::äîáàâèòüÂÑëîâàðüToolStripMenuItem_Click);
 			// 
 			// openFileDialog1
 			// 
@@ -814,16 +814,16 @@ namespace Myinterface {
 		Child_Form->ShowDialog();
 
 	}
-private: System::Void äîáàâèòüÂÑëîâàðüToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	Form^ Frm;
-	Frm = gcnew Child(richTextBox1->SelectedText);
-	Frm->ShowDialog();
+//private: System::Void äîáàâèòüÂÑëîâàðüToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+//	Form^ Frm;
+//	Frm = gcnew Child(richTextBox1->SelectedText);
+//	Frm->ShowDialog();
 	//if (this->richTextBox1->SelectionLength > 0)
 	//{
 
 	//	Child_Form-> = this->richTextBox1->SelectedRtf;
 	//}
-}
+//}
 
 private: System::Void ñîçäàòüToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (this->richTextBox1->Text != "")

@@ -1,5 +1,6 @@
 #pragma once
 using namespace System::IO;
+#include "Child.h"
 
 namespace Myinterface {
 
@@ -23,6 +24,7 @@ namespace Myinterface {
 			//TODO: äîáàâüòå êîä êîíñòðóêòîðà
 			//
 			File_name = gcnew String("Noname.rtf");
+			Child_Form = gcnew Child;
 		}
 
 	protected:
@@ -37,6 +39,7 @@ namespace Myinterface {
 			}
 		}
 		String^ File_name;
+		Form ^Child_Form;
 	private: System::Windows::Forms::MenuStrip^ menuStrip1;
 	private: System::Windows::Forms::ToolStripMenuItem^ ôàéëToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ ñîçäàòüToolStripMenuItem;
@@ -86,6 +89,11 @@ namespace Myinterface {
 	private: System::Windows::Forms::ToolStripSeparator^ toolStripSeparator2;
 	private: System::Windows::Forms::ToolStripTextBox^ toolStripTextBox1;
 	private: System::Windows::Forms::ToolStripButton^ toolStripButton3;
+	private: System::Windows::Forms::ToolStripSeparator^ toolStripSeparator3;
+	private: System::Windows::Forms::ToolStripButton^ toolStripLabel1;
+	private: System::Windows::Forms::ToolStripMenuItem^ ñëîâàðüToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ äîáàâèòüÂÑëîâàðüToolStripMenuItem;
+
 
 
 
@@ -138,6 +146,8 @@ namespace Myinterface {
 			this->toolStripSeparator2 = (gcnew System::Windows::Forms::ToolStripSeparator());
 			this->toolStripTextBox1 = (gcnew System::Windows::Forms::ToolStripTextBox());
 			this->toolStripButton3 = (gcnew System::Windows::Forms::ToolStripButton());
+			this->toolStripSeparator3 = (gcnew System::Windows::Forms::ToolStripSeparator());
+			this->toolStripLabel1 = (gcnew System::Windows::Forms::ToolStripButton());
 			this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());
 			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
 			this->ôàéëToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -150,6 +160,8 @@ namespace Myinterface {
 			this->âñòàâèòüToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->âûäåëèòüÂñåToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->âûõîäToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->ñëîâàðüToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->äîáàâèòüÂÑëîâàðüToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->saveFileDialog1 = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->fontDialog1 = (gcnew System::Windows::Forms::FontDialog());
@@ -171,10 +183,9 @@ namespace Myinterface {
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(549, 28);
+			this->menuStrip1->Size = System::Drawing::Size(675, 28);
 			this->menuStrip1->TabIndex = 0;
 			this->menuStrip1->Text = L"menuStrip1";
-			this->menuStrip1->ItemClicked += gcnew System::Windows::Forms::ToolStripItemClickedEventHandler(this, &MainForm::menuStrip1_ItemClicked);
 			// 
 			// ôàéëToolStripMenuItem
 			// 
@@ -256,7 +267,6 @@ namespace Myinterface {
 			this->toolStripMenuItem1->Name = L"toolStripMenuItem1";
 			this->toolStripMenuItem1->Size = System::Drawing::Size(67, 24);
 			this->toolStripMenuItem1->Text = L"Âûõîä";
-			this->toolStripMenuItem1->Click += gcnew System::EventHandler(this, &MainForm::toolStripMenuItem1_Click);
 			// 
 			// ñîõðàíèòüÈÂûéòèToolStripMenuItem
 			// 
@@ -273,15 +283,15 @@ namespace Myinterface {
 			// toolStrip1
 			// 
 			this->toolStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
-			this->toolStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(13) {
+			this->toolStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(15) {
 				this->ñîçäàòüToolStripButton,
 					this->îòêðûòüToolStripButton, this->ñîõðàíèòüToolStripButton, this->toolStripSeparator, this->âûðåçàòüToolStripButton, this->êîïèðîâàòüToolStripButton,
 					this->âñòàâêàToolStripButton, this->toolStripSeparator1, this->toolStripButton1, this->toolStripButton2, this->toolStripSeparator2,
-					this->toolStripTextBox1, this->toolStripButton3
+					this->toolStripTextBox1, this->toolStripButton3, this->toolStripSeparator3, this->toolStripLabel1
 			});
 			this->toolStrip1->Location = System::Drawing::Point(0, 28);
 			this->toolStrip1->Name = L"toolStrip1";
-			this->toolStrip1->Size = System::Drawing::Size(549, 27);
+			this->toolStrip1->Size = System::Drawing::Size(675, 27);
 			this->toolStrip1->TabIndex = 1;
 			this->toolStrip1->Text = L"toolStrip1";
 			this->toolStrip1->ItemClicked += gcnew System::Windows::Forms::ToolStripItemClickedEventHandler(this, &MainForm::toolStrip1_ItemClicked);
@@ -393,6 +403,21 @@ namespace Myinterface {
 			this->toolStripButton3->Text = L"Íàéòè";
 			this->toolStripButton3->Click += gcnew System::EventHandler(this, &MainForm::toolStripButton3_Click);
 			// 
+			// toolStripSeparator3
+			// 
+			this->toolStripSeparator3->Name = L"toolStripSeparator3";
+			this->toolStripSeparator3->Size = System::Drawing::Size(6, 27);
+			// 
+			// toolStripLabel1
+			// 
+			this->toolStripLabel1->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Text;
+			this->toolStripLabel1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"toolStripLabel1.Image")));
+			this->toolStripLabel1->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->toolStripLabel1->Name = L"toolStripLabel1";
+			this->toolStripLabel1->Size = System::Drawing::Size(72, 24);
+			this->toolStripLabel1->Text = L"Ñëîâàðü";
+			this->toolStripLabel1->Click += gcnew System::EventHandler(this, &MainForm::toolStripLabel1_Click);
+			// 
 			// richTextBox1
 			// 
 			this->richTextBox1->AutoWordSelection = true;
@@ -400,19 +425,20 @@ namespace Myinterface {
 			this->richTextBox1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->richTextBox1->Location = System::Drawing::Point(0, 55);
 			this->richTextBox1->Name = L"richTextBox1";
-			this->richTextBox1->Size = System::Drawing::Size(549, 277);
+			this->richTextBox1->Size = System::Drawing::Size(675, 348);
 			this->richTextBox1->TabIndex = 2;
 			this->richTextBox1->Text = L"";
+			this->richTextBox1->TextChanged += gcnew System::EventHandler(this, &MainForm::richTextBox1_TextChanged);
 			// 
 			// contextMenuStrip1
 			// 
 			this->contextMenuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
-			this->contextMenuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
+			this->contextMenuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(5) {
 				this->ôàéëToolStripMenuItem1,
-					this->ïðàâêàToolStripMenuItem1, this->âûõîäToolStripMenuItem
+					this->ïðàâêàToolStripMenuItem1, this->âûõîäToolStripMenuItem, this->ñëîâàðüToolStripMenuItem, this->äîáàâèòüÂÑëîâàðüToolStripMenuItem
 			});
 			this->contextMenuStrip1->Name = L"contextMenuStrip1";
-			this->contextMenuStrip1->Size = System::Drawing::Size(130, 76);
+			this->contextMenuStrip1->Size = System::Drawing::Size(219, 152);
 			// 
 			// ôàéëToolStripMenuItem1
 			// 
@@ -421,7 +447,7 @@ namespace Myinterface {
 					this->îòêðûòüToolStripMenuItem1, this->ñîõðàíèòüToolStripMenuItem1
 			});
 			this->ôàéëToolStripMenuItem1->Name = L"ôàéëToolStripMenuItem1";
-			this->ôàéëToolStripMenuItem1->Size = System::Drawing::Size(129, 24);
+			this->ôàéëToolStripMenuItem1->Size = System::Drawing::Size(218, 24);
 			this->ôàéëToolStripMenuItem1->Text = L"Ôàéë";
 			// 
 			// ñîçäàòüToolStripMenuItem1
@@ -429,18 +455,21 @@ namespace Myinterface {
 			this->ñîçäàòüToolStripMenuItem1->Name = L"ñîçäàòüToolStripMenuItem1";
 			this->ñîçäàòüToolStripMenuItem1->Size = System::Drawing::Size(166, 26);
 			this->ñîçäàòüToolStripMenuItem1->Text = L"Ñîçäàòü";
+			this->ñîçäàòüToolStripMenuItem1->Click += gcnew System::EventHandler(this, &MainForm::ñîçäàòüToolStripMenuItem1_Click);
 			// 
 			// îòêðûòüToolStripMenuItem1
 			// 
 			this->îòêðûòüToolStripMenuItem1->Name = L"îòêðûòüToolStripMenuItem1";
 			this->îòêðûòüToolStripMenuItem1->Size = System::Drawing::Size(166, 26);
 			this->îòêðûòüToolStripMenuItem1->Text = L"Îòêðûòü";
+			this->îòêðûòüToolStripMenuItem1->Click += gcnew System::EventHandler(this, &MainForm::îòêðûòüToolStripMenuItem1_Click);
 			// 
 			// ñîõðàíèòüToolStripMenuItem1
 			// 
 			this->ñîõðàíèòüToolStripMenuItem1->Name = L"ñîõðàíèòüToolStripMenuItem1";
 			this->ñîõðàíèòüToolStripMenuItem1->Size = System::Drawing::Size(166, 26);
 			this->ñîõðàíèòüToolStripMenuItem1->Text = L"Ñîõðàíèòü";
+			this->ñîõðàíèòüToolStripMenuItem1->Click += gcnew System::EventHandler(this, &MainForm::ñîõðàíèòüToolStripMenuItem1_Click);
 			// 
 			// ïðàâêàToolStripMenuItem1
 			// 
@@ -449,7 +478,7 @@ namespace Myinterface {
 					this->êîïèðîâàòüToolStripMenuItem1, this->âñòàâèòüToolStripMenuItem1, this->âûäåëèòüÂñåToolStripMenuItem1
 			});
 			this->ïðàâêàToolStripMenuItem1->Name = L"ïðàâêàToolStripMenuItem1";
-			this->ïðàâêàToolStripMenuItem1->Size = System::Drawing::Size(129, 24);
+			this->ïðàâêàToolStripMenuItem1->Size = System::Drawing::Size(218, 24);
 			this->ïðàâêàToolStripMenuItem1->Text = L"Ïðàâêà";
 			// 
 			// âûðåçàòüToolStripMenuItem1
@@ -478,12 +507,26 @@ namespace Myinterface {
 			this->âûäåëèòüÂñåToolStripMenuItem1->Name = L"âûäåëèòüÂñåToolStripMenuItem1";
 			this->âûäåëèòüÂñåToolStripMenuItem1->Size = System::Drawing::Size(186, 26);
 			this->âûäåëèòüÂñåToolStripMenuItem1->Text = L"Âûäåëèòü âñå";
+			this->âûäåëèòüÂñåToolStripMenuItem1->Click += gcnew System::EventHandler(this, &MainForm::âûäåëèòüÂñåToolStripMenuItem1_Click);
 			// 
 			// âûõîäToolStripMenuItem
 			// 
 			this->âûõîäToolStripMenuItem->Name = L"âûõîäToolStripMenuItem";
-			this->âûõîäToolStripMenuItem->Size = System::Drawing::Size(129, 24);
+			this->âûõîäToolStripMenuItem->Size = System::Drawing::Size(218, 24);
 			this->âûõîäToolStripMenuItem->Text = L"Âûõîä";
+			// 
+			// ñëîâàðüToolStripMenuItem
+			// 
+			this->ñëîâàðüToolStripMenuItem->Name = L"ñëîâàðüToolStripMenuItem";
+			this->ñëîâàðüToolStripMenuItem->Size = System::Drawing::Size(218, 24);
+			this->ñëîâàðüToolStripMenuItem->Text = L"Ñèíîíèìû";
+			// 
+			// äîáàâèòüÂÑëîâàðüToolStripMenuItem
+			// 
+			this->äîáàâèòüÂÑëîâàðüToolStripMenuItem->Name = L"äîáàâèòüÂÑëîâàðüToolStripMenuItem";
+			this->äîáàâèòüÂÑëîâàðüToolStripMenuItem->Size = System::Drawing::Size(218, 24);
+			this->äîáàâèòüÂÑëîâàðüToolStripMenuItem->Text = L"Äîáàâèòü â ñëîâàðü";
+			this->äîáàâèòüÂÑëîâàðüToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainForm::äîáàâèòüÂÑëîâàðüToolStripMenuItem_Click);
 			// 
 			// openFileDialog1
 			// 
@@ -497,9 +540,9 @@ namespace Myinterface {
 				this->toolStripStatusLabel1,
 					this->toolStripStatusLabel2
 			});
-			this->statusStrip1->Location = System::Drawing::Point(0, 306);
+			this->statusStrip1->Location = System::Drawing::Point(0, 377);
 			this->statusStrip1->Name = L"statusStrip1";
-			this->statusStrip1->Size = System::Drawing::Size(549, 26);
+			this->statusStrip1->Size = System::Drawing::Size(675, 26);
 			this->statusStrip1->TabIndex = 3;
 			this->statusStrip1->Text = L"statusStrip1";
 			// 
@@ -519,7 +562,7 @@ namespace Myinterface {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(549, 332);
+			this->ClientSize = System::Drawing::Size(675, 403);
 			this->Controls->Add(this->statusStrip1);
 			this->Controls->Add(this->richTextBox1);
 			this->Controls->Add(this->toolStrip1);
@@ -542,20 +585,19 @@ namespace Myinterface {
 
 		}
 #pragma endregion
-	private: System::Void menuStrip1_ItemClicked(System::Object^ sender, System::Windows::Forms::ToolStripItemClickedEventArgs^ e) {
-	}
 
-	private: System::Void toolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
 	private: System::Void ñîçäàòüToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (this->richTextBox1->Text != "")
 		{
 			File_name = this->richTextBox1->Text;
 			ñîõðàíèòüÊàêToolStripMenuItem_Click(sender, e);
 		}
-		// Ïðåäâàðèòåëüíî ïðîâåðèòü, ÷òî åñòü â îêíå è ïðåäëîæèòü ñîõðàíèòü.
-		this->richTextBox1->Text = "";
-		File_name = "Noname.rtf";
+		else
+		{
+			MessageBox::Show("Ôàéë ñîçäàí","Ïðåäóïðåæäåíèå");
+			this->richTextBox1->Text = "";
+			File_name = "Noname.rtf";
+		}
 	}
 
 	private: System::Void îòêðûòüToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -574,7 +616,19 @@ namespace Myinterface {
 			(File_name, RichTextBoxStreamType::RichText);
 		}
 		else // Íå ÎÊ èëè åùå ÷òî-òî.
-			;
+			if (richTextBox1->Text == "")
+			{
+				âûäåëèòüÂñåToolStripMenuItem1->Enabled = false;
+				âûðåçàòüToolStripMenuItem1->Enabled = false;
+				êîïèðîâàòüToolStripMenuItem1->Enabled = false;
+			}
+			else
+			{
+					âûäåëèòüÂñåToolStripMenuItem1->Enabled = true;
+					âûðåçàòüToolStripMenuItem1->Enabled = true;
+					êîïèðîâàòüToolStripMenuItem1->Enabled = true;
+
+			}
 	}
 
 	private: System::Void openFileDialog1_FileOk(System::Object^ sender, System::ComponentModel::CancelEventArgs^ e) {
@@ -583,6 +637,18 @@ namespace Myinterface {
 		openFileDialog1->FileName = "";
 		this->statusStrip1->Items[0]->Text = File_name;
 		this->statusStrip1->Items[1]->Text = DateTime::Now.ToShortDateString();
+		if (richTextBox1->Text != "" && this->richTextBox1->SelectionLength > 0)
+		{
+			âûäåëèòüÂñåToolStripMenuItem1->Enabled = true;
+			âûðåçàòüToolStripMenuItem1->Enabled = true;
+			êîïèðîâàòüToolStripMenuItem1->Enabled = true;
+		}
+		else
+		{
+			âûäåëèòüÂñåToolStripMenuItem1->Enabled = false;
+			âûðåçàòüToolStripMenuItem1->Enabled = false;
+			êîïèðîâàòüToolStripMenuItem1->Enabled = false;
+		}
 	}
 	private: System::Void ñîõðàíèòüToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		// Îòñëåäèòü ïåðâîíà÷àëüíîå ñîõðàíåíèå.
@@ -744,7 +810,91 @@ namespace Myinterface {
 			}
 		}
 	}
-	}; 
+	private: System::Void toolStripLabel1_Click(System::Object^ sender, System::EventArgs^ e) {
+		Child_Form->ShowDialog();
+
+	}
+private: System::Void äîáàâèòüÂÑëîâàðüToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	Form^ Frm;
+	Frm = gcnew Child(richTextBox1->SelectedText);
+	Frm->ShowDialog();
+	//if (this->richTextBox1->SelectionLength > 0)
+	//{
+
+	//	Child_Form-> = this->richTextBox1->SelectedRtf;
+	//}
+}
+
+private: System::Void ñîçäàòüToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (this->richTextBox1->Text != "")
+	{
+		File_name = this->richTextBox1->Text;
+		ñîõðàíèòüÊàêToolStripMenuItem_Click(sender, e);
+	}
+	else
+	{
+		MessageBox::Show("Ôàéë ñîçäàí", "Ïðåäóïðåæäåíèå");
+		this->richTextBox1->Text = "";
+		File_name = "Noname.rtf";
+	}
+}
+private: System::Void îòêðûòüToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
+	openFileDialog1->FileName = "";
+	this->openFileDialog1->InitialDirectory =
+		System::IO::Directory::GetCurrentDirectory();
+	this->openFileDialog1->Filter = "Rtf ôàéëû (*.rtf)|*.rtf|Âñå ôàéëû (*.*) | *.*";
+	// Èìÿ ôàéëà â ïîëå ââîäà èìåíè.
+	this->openFileDialog1->FileName = File_name;
+	// Ïîêàçàòü äèàëîã è æäàòü ÎÊ.
+	if (this->openFileDialog1->ShowDialog() ==
+		System::Windows::Forms::DialogResult::OK)
+	{
+		File_name = openFileDialog1->FileName;
+		this->richTextBox1->LoadFile
+		(File_name, RichTextBoxStreamType::RichText);
+	}
+	else // Íå ÎÊ èëè åùå ÷òî-òî.
+		;
+}
+private: System::Void ñîõðàíèòüToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
+	// Îòñëåäèòü ïåðâîíà÷àëüíîå ñîõðàíåíèå.
+	if (File_name == "Noname.rtf")
+		// Âûçâàòü ïóíêò ìåíþ "Ñîõðàíèòü êàê".
+		// Ìîæíî ïðåäâàðèòåëüíî ñîîáùèòü – MessageBox.
+	{
+		ñîõðàíèòüÊàêToolStripMenuItem_Click(sender, e);
+		this->statusStrip1->Items[0]->Text = File_name;
+	}
+	else
+		// Ñîõðàíèòü òåêñò â ôàéëå.
+		this->richTextBox1->SaveFile
+		(File_name, RichTextBoxStreamType::RichText);
+	this->statusStrip1->Items[0]->Text = File_name;
+}
+private: System::Void âûäåëèòüÂñåToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	if (richTextBox1->Text != "")
+	{
+		this->richTextBox1->SelectionLength = richTextBox1->TextLength;
+	}
+}
+
+private: System::Void richTextBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	if (richTextBox1->Text != "")
+	{
+		âûäåëèòüÂñåToolStripMenuItem1->Enabled = true;
+		âûðåçàòüToolStripMenuItem1->Enabled = true;
+		êîïèðîâàòüToolStripMenuItem1->Enabled = true;
+	}
+	else
+	{
+		âûäåëèòüÂñåToolStripMenuItem1->Enabled = false;
+		âûðåçàòüToolStripMenuItem1->Enabled = false;
+		êîïèðîâàòüToolStripMenuItem1->Enabled = false;
+	}
+}
+
+};
 };
 
 

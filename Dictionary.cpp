@@ -71,6 +71,18 @@ void my_dict::loadDictionary(String^ fileName)
 		this->add(p);
 	}
 }
+void my_dict::dict_in_file(String^ fileName)
+{
+	//Вывод в файл
+	StreamWriter^ My_SW = gcnew StreamWriter(fileName); // Запись всего текста.
+	for (int i = 0; i < len; i++)
+	{
+		String^ Line = gcnew String("");
+		Line = my_di[i]->Word_ + "$"+ my_di[i]->Definition+"\n";
+		My_SW->Write(Line);
+	}
+	My_SW->Close();
+}
 
 int my_dict::find(String^ name)
 {

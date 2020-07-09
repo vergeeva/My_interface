@@ -59,6 +59,7 @@ public:
 	bool del(Word^);
 	bool add(Word^);
 	void loadDictionary(String^ fileName);
+	void dict_in_file(String^ fileName);
 	int find(String^ name);
 	property int Len {
 		int get() {
@@ -77,7 +78,7 @@ public:
 				return my_di[i]->Definition;
 			}
 		}
-		return "Нет определения";
+		return "Слово не выбрано";
 	}
 };
 

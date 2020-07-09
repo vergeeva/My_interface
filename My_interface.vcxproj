@@ -118,12 +118,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Child.cpp" />
+    <ClCompile Include="Child_1.cpp" />
     <ClCompile Include="Dictionary.cpp" />
     <ClCompile Include="MainForm.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Child.h">
+    <ClInclude Include="Child_1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Dictionary.h" />
@@ -132,8 +132,8 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Child.resx">
-      <DependentUpon>Child.h</DependentUpon>
+    <EmbeddedResource Include="Child_1.resx">
+      <DependentUpon>Child_1.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>
@@ -141,7 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Переводы.txt" />
-    <Text Include="Синонимы.txt" />
+    <Text Include="Запасной файл.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
